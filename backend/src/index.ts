@@ -1,8 +1,11 @@
 import express from "express";
 import {ENV} from "./config/env";
 import cors from "cors";
-
 import { clerkMiddleware } from '@clerk/express';
+import userRoutes from "./routes/userRoutes";
+import commentRoutes from "./routes/commentRoutes";
+import productRoutes from "./routes/productRoutes";
+
 
 
 
@@ -31,6 +34,11 @@ app.get("/", (req, res) => {
        
     })
 });
+
+
+app.use("api/users", userRoutes); 
+app.use("api/products", productRoutes);
+app.use("app/comments", commentRoutes);
 
 
 app.listen(ENV.PORT, ()=> {

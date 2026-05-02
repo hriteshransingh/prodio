@@ -57,7 +57,7 @@ export const createProduct = async (data: NewProduct) => {
   return product;
 };
 
-export const getAllProducts = async (id: string) => {
+export const getAllProducts = async () => {
   return db.query.products.findMany({
     with: { users: true },
     orderBy: (products, { desc }) => [desc(products.createdAt)], //latest product first
